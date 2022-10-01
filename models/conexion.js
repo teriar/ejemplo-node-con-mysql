@@ -37,12 +37,25 @@ var mysql = require('mysql');
 
             resolve (result)
         }
-           
-           
-        
         })
     }
 )}
 
 
-  module.exports = {conector, consulta}
+
+
+const actualizar = async(sentencia)=>{
+ return new Promise(function(resolve, reject){
+   
+    conector.query(sentencia,(err,result,field)=>{
+        if(err){ throw error}
+        else{
+            resolve(field);
+        }
+    })
+
+ })
+
+}
+
+  module.exports = {conector, consulta, actualizar}
